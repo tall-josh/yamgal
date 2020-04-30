@@ -18,7 +18,7 @@ def validate_data(data):
         raise KeyError('"data" MUST be specified')
 
 
-def line_chart(data):
+def make_chart(data):
 
     validate_data(data)
 
