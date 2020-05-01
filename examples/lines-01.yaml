@@ -2,22 +2,22 @@ chart_type: Line # Required (Line|StackedLine| ... todo)
 title: Train Accuracy  # Default ''
 
 # Draw the line (True), Only draw a dot (False)
-stroke: True     # Default True
+stroke: True      # Default True
 
-dots: False     # Default True
+dots: True        # Default True
 
-dot_size: 2     # Default 1 I think
+dot_size: 2       # Default 1 I think
 
 # Fill below line
-fill: True       # Default False  # Does not work with multiple lines
+fill: False       # Default False  # Does not work with multiple lines
 
 # Set reference line to fill too
-zero: 0.3            # Default 0
+zero: 0           # Default 0
 
 x_title: Epoch    # Default ''
 y_title: Accuracy # Defaule ''
 
-x_labels: [a,b,c,d,e,f,g] # Default 1,2,3 ..
+x_labels: [these,can,be,any,string,🍕] # Default 1,2,3 ..
 
 #y_labels: [a,b,c,d,e,f,g,h,i] # Default Infer from data
 
