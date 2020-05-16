@@ -82,4 +82,4 @@ Essentially I want to go through the entire Pygal library.
 
 This is a pre-baked example. Using Pygal. 
 
-![train metrics](https://k3l1upy16j.execute-api.ap-southeast-2.amazonaws.com/dev/line-chart/tall-josh/metrics-svg/master/test/train-acc_run-06.yaml)
+![train metrics](http://c48c65ab.au.ngrok.io/yamgal/github.com/tall-josh/yamgal/blob/master/examples/lines-01.yaml)
