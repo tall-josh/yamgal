@@ -3,7 +3,31 @@ import yaml
 
 CHART_FROM_NAME_STR = {
     "Line" : pygal.Line,
-    "StackedLine": pygal.StackedLine
+    "StackedLine": pygal.StackedLine,
+    "Bar": pygal.Bar,
+    "StackedBar": pygal.StackedBar,
+    "HorizontalBar": pygal.HorizontalBar,
+    "Pie": pygal.Pie,
+    "Histogram": pygal.Histogram,
+    "XY": pygal.XY
+}
+
+STYLE_FROM_NAME_STR = {
+    "Default": pygal.style.DefaultStyle,
+    "Dark": pygal.style.DarkStyle,
+    "Neon": pygal.style.NeonStyle,
+    "DarkSolarized": pygal.style.DarkSolarizedStyle,
+    "LightSolarized": pygal.style.LightSolarizedStyle,
+    "Light": pygal.style.LightStyle,
+    "Clean": pygal.style.CleanStyle,
+    "RedBlue": pygal.style.RedBlueStyle,
+    "DarkColorized": pygal.style.DarkColorizedStyle,
+    "LightColorized": pygal.style.LightColorizedStyle,
+    "Turquoise": pygal.style.TurquoiseStyle,
+    "LightGreen": pygal.style.LightGreenStyle,
+    "DarkGreen": pygal.style.DarkGreenStyle,
+    "DarkGreenBlue": pygal.style.DarkGreenBlueStyle,
+    "Blue": pygal.style.BlueStyle,
 }
 
 CHART_TYPE = 'chart_type'
@@ -22,32 +46,18 @@ def make_chart(data):
 
     validate_data(data)
 
+    style = data['chart_config'].get('style', 'Default')
+    data['chart_config']['style'] = STYLE_FROM_NAME_STR[style]
 
     init_chart = CHART_FROM_NAME_STR[data['chart_type']]
-    line_chart = init_chart(title   = data.get('title', ''),
-                            x_title = data.get('x_title',''),
-                            y_title = data.get('y_title',''),
-                            interpolate = data.get('interpolate', None),
-                            x_label_rotation=data.get('x_label_rotation', 0),
-                            y_label_rotation=data.get('y_label_rotation', 0),
-                            stroke = data.get('stroke', True),
-                            dots = data.get('dots', True),
-                            dot_size = data.get('dot_size', 1),
-                            fill = data.get('fill', False),
-                            zero = data.get('zero', 0),
-                            human_readable = True,
-                           )
+    chart = init_chart(**data['chart_config'],
+                       human_readable = True,
+                      )
 
-    def default_x_labels(data):
-        x_count = 0
-        for run, values in data['data'].items():
-            line_chart.add(run, values)
-            if len(values) > x_count:
-                x_count = len(values)
-        return range(x_count)
+    for run, values in data['data'].items():
+        chart.add(run, values)
 
-    line_chart.x_labels = data.get('x_labels',\
-                                   default_x_labels(data))
-    line_chart.y_labels = data.get('y_labels', [])
+    chart.x_labels = data.get('x_labels', None)
+    chart.y_labels = data.get('y_labels', None)
 
-    return line_chart
+    return chart
