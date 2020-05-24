@@ -8,16 +8,17 @@ Say I have a ML model with a metrics file.
 ```yaml
 # training-loss.yaml
 
-run-01:
-  - 0.1
-  - 0.2
-  - 0.3
-  - 0.4
-run-02:
-  - 0.2
-  - 0.3
-  - 0.4
-  - 0.5
+data:
+  run-01:
+    - 0.1
+    - 0.2
+    - 0.3
+    - 0.4
+  run-02:
+    - 0.2
+    - 0.3
+    - 0.4
+    - 0.5
 ```
 
 Well I would love to be able to reference this in my README.md
@@ -69,17 +70,3 @@ data:
 
   - [line-chart](examples/lines-01.yaml)
 
-## ToDo
-
-Essentially I want to go through the entire Pygal library.
-
-  - [ ] Points
-  - [ ] Bar
-  - [ ] Pie
-  - [ ] WandB style hyperparam visualzation
-  - [ ] ???
-
-
-This is a pre-baked example. Using Pygal. 
-
-![demo chart](https://yamlgal-py3-alpine-c6l3dwv2sq-de.a.run.app/yamgal/github.com/tall-josh/yamgal/blob/master/examples/lines-01.yaml?121111)
