@@ -54,14 +54,6 @@ def add_data_to_chart(chart, data):
         chart.add(k, v)
     return chart
 
-def add_x_labels_to_chart(chart, chart_dict):
-    chart.x_labels = chart_dict.get('x_labels', None)
-    return chart
-
-def add_y_labels_to_chart(chart, chart_dict):
-    chart.y_labels = chart_dict.get('y_labels', None)
-    return chart
-
 def make_chart(chart_dict):
 
     validate_chart_dict(chart_dict)
@@ -70,7 +62,5 @@ def make_chart(chart_dict):
     chart_constructor = get_chart_constructor(chart_dict)
     chart = chart_constructor(**chart_dict['chart_config'])
     chart = add_data_to_chart(chart, chart_dict['data'])
-    chart = add_x_labels_to_chart(chart, chart_dict)
-    chart = add_y_labels_to_chart(chart, chart_dict)
 
     return chart
