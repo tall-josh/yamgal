@@ -3,7 +3,7 @@ import yaml
 
 CHART_FROM_NAME_STR = {
     "line" : pygal.Line,
-    "stackedLine": pygal.StackedLine,
+    "stackedline": pygal.StackedLine,
     "bar": pygal.Bar,
     "stackedbar": pygal.StackedBar,
     "horizontalbar": pygal.HorizontalBar,

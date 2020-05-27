@@ -5,7 +5,7 @@ with open('README.md', 'r') as f:
 desc="Read yaml, use Pygal, return chart"
 
 setup(name='yamgal',
-    version='0.3',
+    version='0.3a',
     author='Joshua Patterson',
     author_email='joshua.d.patterson@gmail.com',
     description=desc,
